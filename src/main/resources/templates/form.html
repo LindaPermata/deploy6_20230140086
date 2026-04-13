@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form - MY Website</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 30px; }
+        .container { max-width: 500px; margin: auto; background: white; border-radius: 10px;
+                     box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 30px; }
+        h2 { color: #1a73e8; margin-bottom: 20px; font-size: 20px; }
+        label { font-size: 14px; color: #555; display: block; margin-bottom: 5px; }
+        input[type="text"] {
+            width: 100%; padding: 9px 13px; margin-bottom: 16px;
+            border: 1px solid #ddd; border-radius: 6px; font-size: 14px;
+        }
+        .radio-group { margin-bottom: 16px; }
+        .radio-group label { font-weight: 600; margin-bottom: 8px; }
+        .radio-option { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 14px; }
+        button {
+            padding: 10px 24px; background: #1a73e8; color: white;
+            border: none; border-radius: 6px; font-size: 14px; cursor: pointer;
+        }
+        button:hover { background: #1558b0; }
+        a { display: block; margin-top: 12px; color: #1a73e8; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Form Input Mahasiswa</h2>
+    <form method="post" th:action="@{/form}">
+        <label>Nama:</label>
+        <input type="text" name="nama" placeholder="Masukkan nama" required/>
+
+        <label>NIM:</label>
+        <input type="text" name="nim" placeholder="Masukkan NIM" required/>
+
+        <div class="radio-group">
+            <label>Jenis Kelamin:</label>
+            <div class="radio-option">
+                <input type="radio" name="jenisKelamin" value="Laki-laki" id="lk" required/>
+                <label for="lk">Laki-laki</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" name="jenisKelamin" value="Perempuan" id="pr"/>
+                <label for="pr">Perempuan</label>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+    <a th:href="@{/home}">Kembali ke Home</a>
+</div>
+</body>
+</html>
