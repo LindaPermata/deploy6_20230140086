@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - MY Website</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 30px; }
+        .container { max-width: 800px; margin: auto; background: white; border-radius: 10px;
+                     box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 30px; }
+        h2 { color: #1a73e8; margin-bottom: 6px; }
+        p { color: #555; margin-bottom: 12px; }
+        a { color: #1a73e8; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        h3 { margin: 20px 0 10px; color: #333; }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: #1a73e8; color: white; }
+        th, td { padding: 10px 14px; text-align: center; border: 1px solid #e0e0e0; font-size: 14px; }
+        tbody tr:nth-child(even) { background: #f9f9f9; }
+        .logout { margin-top: 20px; display: block; color: #1a73e8; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>MY Website 12345678</h2>
+    <p>Selamat datang di aplikasi!</p>
+    <a th:href="@{/form}">+ Input Data Mahasiswa</a>
+
+    <h3>Data Mahasiswa</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Jenis Kelamin</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(userList)}">
+            <td colspan="4">Belum ada data</td>
+        </tr>
+        <tr th:each="user, stat : ${userList}">
+            <td th:text="${stat.index + 1}"></td>
+            <td th:text="${user.nama}"></td>
+            <td th:text="${user.nim}"></td>
+            <td th:text="${user.jenisKelamin}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="logout" th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>
